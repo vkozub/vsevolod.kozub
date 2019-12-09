@@ -6,9 +6,9 @@ Feature: Log in as a registered user
   Scenario: Log in with valid credentials
     Given I am not logged in user
 
-    When I click Sign in button
-    Then Login page is opened
+    When  I click Sign in button
+    Then  Login page is opened
 
-    When I fill valid credentials in
-    And  I click Login button
-    Then I am logged in
+    When  I fill valid credentials in
+    And   I click Login button
+    Then  I am logged in

@@ -24,4 +24,6 @@ end
 
 Then(/^I am logged in$/) do
   expect(page).to have_content 'Logged in as'
+  expect(page).to have_content 'My account'
+
 end
