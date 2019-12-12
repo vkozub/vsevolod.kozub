@@ -1,9 +1,10 @@
 require 'capybara/cucumber'
 require 'selenium-webdriver'
-# require 'site_prism'
-# require 'require_all'
+require 'site_prism'
+require 'require_all'
 
-# require_all 'page_objects'
+require_all 'page_objects/sections'
+require_all 'page_objects/pages'
 # require_relative '../../modules/feature_helper'
 
 def options
