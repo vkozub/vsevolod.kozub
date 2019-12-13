@@ -36,3 +36,11 @@ Then(/^I am logged in$/) do
   expect(page).to have_content 'Logged in as'
   expect(page).to have_content 'My account'
 end
+
+Given(/^I am logged in "([^"]*)"$/) do |user_name|
+  login user_name, 'test123456'
+end
+
+Then(/^Account is opened for "([^"]*)"$/) do |user_name|
+  expect(page).to have_content "Logged in as #{user_name}"
+end
