@@ -12,3 +12,5 @@ Feature: Log in as a registered user
     When  I fill valid credentials in
     And   I click Login button
     Then  I am logged in
+
+    When I click Sign out buton

@@ -28,6 +28,7 @@ end
 
 And(/^I click Login button$/) do
   @login_page.submit_btn.click
+  sleep 2
   # find(:xpath, '//*[@id="login-form"]/form/table/tbody/tr[4]/td[2]/input').click
   # find_button(value: 'Login »').click
 end
@@ -43,4 +44,11 @@ end
 
 Then(/^Account is opened for "([^"]*)"$/) do |user_name|
   expect(page).to have_content "Logged in as #{user_name}"
+  sleep 2
+end
+
+When(/^I click Sign out buton$/) do
+  # find(:xpath, '//*[@id="account"]/ul/li[2]/a').click
+  click_link('Sign out')
+  sleep 1
 end

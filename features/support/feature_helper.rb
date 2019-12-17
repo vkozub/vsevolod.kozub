@@ -7,4 +7,18 @@ module FeatureHelper
       @login_page.password_filed.set password
       @login_page.submit_btn.click
   end
+
+  def create_new_user
+    @first_names_array = Array.new
+    @last_names_array = Array.new
+    @first_names_array = ['John', 'Igor', 'James', 'Bob', 'Susanna']
+    @last_names_array = ['Bond', 'Craig', 'Kozub', 'Mashido', 'Toyota']
+    @password = 'test123456'
+
+    @user_name = 'user_name_' + Time.now.to_i.to_s
+    @first_name = @first_names_array[rand(5)]
+    @last_name = @last_names_array[rand(5)]
+    @email = @first_name + '@' + @last_name + '.com'
+    @language = 'English'
+  end
 end
