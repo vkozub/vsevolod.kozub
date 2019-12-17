@@ -47,7 +47,8 @@ end
 Given(/^I sign out from my account$/) do
   # find(:xpath, '//*[@id="account"]/ul/li[2]/a').click
   # find('#account > ul > li:nth-child(2) > a').click
-  click_link('Sign out')
+  # click_link('Sign out')
+  find_link(class: ['logout'], :visible => :all).visible?
 end
 
 Then(/^I navigate to homepage$/) do
