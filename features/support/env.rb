@@ -2,6 +2,7 @@ require 'capybara/cucumber'
 require 'selenium-webdriver'
 require 'site_prism'
 require 'require_all'
+require 'pry'
 
 require_all 'page_objects/sections'
 require_all 'page_objects/pages'
