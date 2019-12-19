@@ -49,16 +49,17 @@ Given(/^I sign out from my account$/) do
   sleep 2
   # find('Sign Out', visible: false).trigger('click')
   # @my_account_page = MyAccountPage.new
+  # expect(@registration_page.top_menu.register_link).to be_visible
   # @my_account_page.top_menu.register_link.click
   # expect(find("#account"))
   # expect(page).to have_content "Sign out"
-  find('#account > ul > li:nth-child(2) > a').click
+  # find('#content > form > p > input[type=submit]').click
   # within('#account') do
   #   click_link('Sign out')
-  #   # find('.logout').click
+    # find('.logout').click
   # end
   # find('.logout').click
-  # find(:xpath, '//*[@id="account"]/ul/li[2]/a').click
+  find(:xpath, '//*[@id="account"]/ul/li[2]/a').click
   # find('#account > ul > li:nth-child(2) > a').click
   # click_link('Sign out')
   # find_link(class: ['logout'], :visible => :all).visible?
