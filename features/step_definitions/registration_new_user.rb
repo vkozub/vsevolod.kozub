@@ -27,7 +27,7 @@ When(/^I fill in valid data$/) do
   sleep 1
   @registration_page.email.set @email
   sleep 1
-  find(:xpath, '//*[@id="user_language"]/option[14]').click
+  find(:xpath, '//*[@id="user_language"]/option[16]').click
   # select("en", from: '#user_language')
   # @registration_page.language
   sleep 1
@@ -46,33 +46,45 @@ end
 
 Given(/^I sign out from my account$/) do
   # binding.pry
-  find(:xpath, '//*[@id="account"]/ul/li[2]/a').click
+  sleep 2
+  # find('Sign Out', visible: false).trigger('click')
+  # @my_account_page = MyAccountPage.new
+  # @my_account_page.top_menu.register_link.click
+  # expect(find("#account"))
+  # expect(page).to have_content "Sign out"
+  find('#account > ul > li:nth-child(2) > a').click
+  # within('#account') do
+  #   click_link('Sign out')
+  #   # find('.logout').click
+  # end
+  # find('.logout').click
+  # find(:xpath, '//*[@id="account"]/ul/li[2]/a').click
   # find('#account > ul > li:nth-child(2) > a').click
   # click_link('Sign out')
   # find_link(class: ['logout'], :visible => :all).visible?
 end
 
-Then(/^I navigate to homepage$/) do
-  expect(page).to have_content "Sign in"
-end
-
-When(/^I click on Sign in link$/) do
-  @home_page.top_menu.sign_in_link.click
-end
-
-When(/^I fill in my credentials$/) do
-  @login_page = LoginPage.new
-  @login_page.user_name_filed.set @user_name
-  @login_page.password_filed.set @password
-  sleep 2
-end
-
-And(/^I click on Login button$/) do
-  @login_page.submit_btn.click
-end
-
-Then(/^I am accessed to my account$/) do
-  expect(page).to have_content "Logged in as #{@user_name}"
-end
+# Then(/^I navigate to homepage$/) do
+#   expect(page).to have_content "Sign in"
+# end
+#
+# When(/^I click on Sign in link$/) do
+#   @home_page.top_menu.sign_in_link.click
+# end
+#
+# When(/^I fill in my credentials$/) do
+#   @login_page = LoginPage.new
+#   @login_page.user_name_filed.set @user_name
+#   @login_page.password_filed.set @password
+#   sleep 2
+# end
+#
+# And(/^I click on Login button$/) do
+#   @login_page.submit_btn.click
+# end
+#
+# Then(/^I am accessed to my account$/) do
+#   expect(page).to have_content "Logged in as #{@user_name}"
+# end
 
 

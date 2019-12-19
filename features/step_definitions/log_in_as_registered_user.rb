@@ -1,5 +1,5 @@
 Given(/^I am not logged in user$/) do
-  # visit 'http://demo.redmine.org/'
+  # visit 'http://10.131.40.173/'
   @home_page = HomePage.new
   @home_page.load
 end
@@ -13,13 +13,13 @@ end
 
 Then(/^Login page is opened$/) do
   expect(current_url).to include '/login'
-  expect(page).to have_content 'Login:'
-  expect(page).to have_content 'Password:'
+  expect(page).to have_content 'Login'
+  expect(page).to have_content 'Password'
 end
 
 When(/^I fill valid credentials in$/) do
   @login_page = LoginPage.new
-  @login_page.user_name_filed.set 'member0'
+  @login_page.user_name_filed.set 'member12'
   @login_page.password_filed.set 'test123456'
   # find('#username').set 'member0'
   # find('#password').set 'test123456'
@@ -40,6 +40,7 @@ end
 
 Given(/^I am logged in "([^"]*)"$/) do |user_name|
   login user_name, 'test123456'
+  sleep 2
 end
 
 Then(/^Account is opened for "([^"]*)"$/) do |user_name|

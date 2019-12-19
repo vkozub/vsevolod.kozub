@@ -18,7 +18,7 @@ module FeatureHelper
     @user_name = 'user_name_' + Time.now.to_i.to_s
     @first_name = @first_names_array[rand(5)]
     @last_name = @last_names_array[rand(5)]
-    @email = @first_name + '11@11' + @last_name + '.com'
+    @email = @first_name + '22@11' + @last_name + '.com'
     @language = 'English'
   end
 end
