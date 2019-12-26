@@ -11,7 +11,7 @@ module FeatureHelper
   def create_new_user
     @first_names_array = Array.new
     @last_names_array = Array.new
-    @first_names_array = ['John', 'Igor', 'James', 'Bob', 'Susanna']
+    @first_names_array = ['Jake', 'Ishido', 'Barbara', 'Crol', 'Tanya']
     @last_names_array = ['Bond', 'Craig', 'Kozub', 'Mashido', 'Toyota']
     @password = 'test123456'
 
