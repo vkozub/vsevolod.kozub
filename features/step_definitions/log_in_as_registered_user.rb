@@ -19,8 +19,8 @@ end
 
 When(/^I fill valid credentials in$/) do
   @login_page = LoginPage.new
-  @login_page.user_name_filed.set 'member12'
-  @login_page.password_filed.set 'test123456'
+  @login_page.user_name_field.set 'member12'
+  @login_page.password_field.set 'test123456'
   # find('#username').set 'member0'
   # find('#password').set 'test123456'
   sleep 2

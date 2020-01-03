@@ -1,7 +1,9 @@
 require 'capybara/cucumber'
+require 'ffaker'
 require 'json'
 require 'pry'
 require 'require_all'
+require 'rspec/expectations'
 require 'selenium-webdriver'
 require 'site_prism'
 

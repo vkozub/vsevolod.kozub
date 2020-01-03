@@ -21,4 +21,20 @@ module FeatureHelper
     @email = @first_name + '22@11' + @last_name + '.com'
     @language = 'English'
   end
+
+  def initialize
+    @admin_username = "user"
+    @admin_password = "uTMM4isLhuB8"
+    @project_identifier = "qazwsxedc123"
+    @project_name = "Vsevolod_Kozub_Project"
+  end
+
+  def create_new_user_credentials
+    @first_name = FFaker::Name.first_name
+    @last_name = FFaker::Name.last_name
+    @user_name = FFaker::Name.user_name
+    @email = FFaker::Internet.safe_email
+    @password = FFaker::Internet.password
+    @language = 'English'
+  end
 end

@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'capybara'
 gem 'cucumber'
+gem 'ffaker'
 gem 'pry'
 gem 'rake'
 gem 'rest-client'

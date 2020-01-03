@@ -19,8 +19,11 @@ task :create_dir do
   Dir.mkdir 'test_reports' unless Dir.exist? 'test_reports'
 end
 
+decs 'Make directory for reporting'
+
 task :run_cucumber do
-  sh 'cucumber features/api.feature --format json --out "reporting/cucumber.json"'
+  # sh 'cucumber features/api.feature --format json --out "reporting/new_project.json"'
+  sh 'cucumber features/test_script.feature --format json --out "reporting/new_project.json"'
 end
 
 task :run_2 do
