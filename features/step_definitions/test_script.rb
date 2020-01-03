@@ -66,58 +66,107 @@ end
 Then(/^I can can see 'developer' user in the project member list$/) do
   sleep 2
   click_link("#{@project_name}")
+  expect(current_url).to include "/projects/#{@project_name}"
+  expect(page).to have_content @first_name + @last_name
+  expect(page).to have_content 'Developer:'
 end
 
 When(/^I create an issue and assign 'developer' user to created issue$/) do
-  pending
+  @issues_page = IssuesPage.new
+  @issues_page.main_menu.issues_li.click
+  @issues_page.new_issue_link.click
+  expect(current_url).to include "/projects/#{@project_name}/issues/new"
+
+  @new_issue_page = NewIssuePage.new
+  @new_issue_page.issue_subject.set 'IE: Wrong color of layout'
+  select("#{@first_name + @last_name}", from: @new_issue_page.issue_assigned_to_id)
+  sleep 2
+  @new_issue_page.issue_create_btn.click
+
 end
 
 Then(/^I see the issue is created$/) do
-  pending
+  expect(page).to have_content 'IE: Wrong color of layout'
+  expect(page).to have_content 'Issue '
+  expect(page).to have_content ' created.'
 end
 
 And(/^I see 'developer' user is assigned to the issue$/) do
-  pending
+  expect(page).to have_content @first_name + @last_name
 end
 
 When(/^I logout$/) do
-  pending
+  @home_page.top_menu.sign_out_link.click
+  expect(current_url).to eq 'http://10.131.40.173'
 end
 
 When(/^I login as 'developer' user$/) do
-  pending
+  @login_page = LoginPage.new
+  @login_page.user_name_field.set @user_name
+  @login_page.password_field.set @password
+  sleep 2
+  @login_page.submit_btn.click
 end
 
 Then(/^I become logged in as 'developer' user$/) do
-  pending
+  expect(current_url).to include "/my/account"
+  expect(page).to have_content "Logged in as #{@user_name}"
 end
 
 When(/^I track time for the assigned issue$/) do
-  pending
+  @home_page.top_menu.projects_link.click
+  expect(current_url).to include '/projects'
+  @issues_page.main_menu.issues_li.click
+  find('#issue-1 > td.buttons > a').click
+  find('#context-menu > ul > li:nth-child(2) > a').click
+  find('#context-menu > ul > li:nth-child(2) > ul > li:nth-child(1) > a').click
+
 end
 
 Then(/^I see the time is tracked properly$/) do
-  pending
+  expect(find('#issue-1 > td.status')).to have_content 'In Progress'
 end
 
 When(/^I close the issue$/) do
-  pending
+  find('#issue-1 > td.buttons > a').click
+  find('#context-menu > ul > li:nth-child(2) > a').click
+  find('#context-menu > ul > li:nth-child(2) > ul > li:nth-child(4) > a').click
+
 end
 
 Then(/^I see the issue was closed$/) do
-  pending
-end
+  @issues_page.main_menu.overview_li.click
+  expect(current_url).to include "/projects/#{@project_name}"
+  find("#{@first_name + ' ' + @last_name}").click
+  expect(find('#activity')).to have_content '(Closed): IE: Wrong color of layout'
+  @home_page.top_menu.sign_out_link.click
+end}
 
 When(/^I login as 'admin' user$/) do
-  pending
+  @home_page.top_menu.sign_in_link.click
+  expect(current_url).to include '/login'
+  @login_page.user_name_field.set @admin_username
+  @login_page.password_field.set @admin_password
+  @login_page.submit_btn.click
 end
 
 When(/^I close the project$/) do
-  pending
+  @home_page.top_menu.projects_link.click
+  click_link("#{@project_name}")
+  find('#content > div.contextual > a.icon.icon-lock').click
+  expect(message).to eq('Are you sure?')
+  accept_alert do
+    click_link('OK')
+  end
+
+
 end
 
 Then(/^I see it was successfully closed$/) do
-  pending
+  expect(page).to have_content 'This project is closed and read-only.'
+  @home_page.top_menu.projects_link.click
+  expect(page).not_to have_content "#{@project_name}"
+  @home_page.top_menu.sign_out_link.click
 end
 
 

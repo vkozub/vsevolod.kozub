@@ -40,6 +40,7 @@ module APIHelper
 
   def add_user_membership
     user_id_1 = JSON.parse(@response_api_create_user.body)['users']['id']
+
     payload_membership = {
             'membership' => {
             'user_id' => user_id_1
