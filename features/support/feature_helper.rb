@@ -29,10 +29,11 @@ module FeatureHelper
     @project_name = "Vsevolod_Kozub_Project"
   end
 
+
   def create_new_user_credentials
     @first_name = FFaker::Name.first_name
     @last_name = FFaker::Name.last_name
-    @user_name = FFaker::Name.user_name
+    @user_name = FFaker::Internet.user_name
     @email = FFaker::Internet.safe_email
     @password = FFaker::Internet.password
     @language = 'English'

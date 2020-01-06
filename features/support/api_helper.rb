@@ -35,16 +35,19 @@ module APIHelper
 
 
     @response_api_create_user = RestClient.post 'http://10.131.40.173/users.json', payload_user.to_json, {'Content-Type' => 'application/json', 'X-Redmine-API-Key' => '1edaba58e5d75580c1b12747a3467b72084d5170'}
-
+    # p @response_api_create_user.code
+    # p @response_api_create_user.headers
+    p @response_api_create_user.body
+    puts JSON.parse(@response_api_create_user.body)['user']['id']
   end
 
   def add_user_membership
-    user_id_1 = JSON.parse(@response_api_create_user.body)['users']['id']
+    @user_id_add = JSON.parse(@response_api_create_user.body)['user']['id']
 
     payload_membership = {
             'membership' => {
-            'user_id' => user_id_1
-            'role_ids' => '4'}}
+            'user_id' => @user_id_add,
+            'role_ids' => [ 4 ]}}
 
     @response_api_add_membership = RestClient.post "http://10.131.40.173/projects/#{@project_identifier}/memberships.json", payload_membership.to_json, {'Content-Type' => 'application/json', 'X-Redmine-API-Key' => '1edaba58e5d75580c1b12747a3467b72084d5170'}
 

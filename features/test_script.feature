@@ -36,8 +36,8 @@ Feature: Integration functional testing of Redmine user rights
     When I close the issue
     Then I see the issue was closed
 
-    When I logout
-    Then I am not logged in visitor
+    When I logout again
+    Then I am not logged in visitor again
 
     When I login as 'admin' user
     Then I become logged in as 'admin' user
